@@ -9,10 +9,7 @@ string convert_octal_to_binary(string octal_value);
 
 
 int main() {
-    string ok = convert_decimal_to_binary(45343409);
-    cout << ok << endl;
-    string lol= convert_octal_to_binary("345");
-    cout << lol << endl;
+
 }
 // In this function, the user enters a decimal (base 10) number,
 // and the binary result (base 2) is returned as a string.
@@ -46,14 +43,12 @@ string convert_octal_to_binary(string octal_value)   //, bool extra_zeros_at_beg
     while (right_index >= 0){
         char right_value = octal_value.at(right_index);
         int right_valuee = right_value - '0';
-        cout << right_valuee << endl;
         string current_binary;
         int current_factor =1;
         string ok = convert_decimal_to_binary(right_valuee);
         while (ok.length()<3){
             ok = "0" + ok;
         }
-        cout << ok <<endl;
         right_index-=1;
         resulting_octal =  ok + resulting_octal;
         }
@@ -70,3 +65,5 @@ string convert_octal_to_binary(string octal_value)   //, bool extra_zeros_at_beg
      */
     return resulting_octal;
     }
+    
+
