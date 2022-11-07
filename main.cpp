@@ -2,14 +2,16 @@
 #include <iomanip>
 #include <string>
 #include <vector>
+#include <unordered_map>
 using namespace std;
 
 string convert_decimal_to_binary(int decimal_number);
 string convert_octal_to_binary(string octal_value);
+string convert_hexadecimal_to_binary(string hexadecimal_value);
 
 
 int main() {
-
+    cout << convert_hexadecimal_to_binary("1AC");
 }
 // In this function, the user enters a decimal (base 10) number,
 // and the binary result (base 2) is returned as a string.
@@ -65,5 +67,31 @@ string convert_octal_to_binary(string octal_value)   //, bool extra_zeros_at_beg
      */
     return resulting_octal;
     }
-    
+
+string convert_hexadecimal_to_binary(string hexadecimal_value){
+    string final_value;
+    unordered_map<char,int> results= {
+            {'A',10},
+            {'B',11},
+            {'C',12},
+            {'D',13},
+            {'E',14},
+            {'F',15},
+    };
+    int right_index = hexadecimal_value.length() - 1;
+    while (right_index>=0){
+        int right_val;
+        char right_value = hexadecimal_value.at(right_index);
+        if (results.count(right_value)){
+            right_val = results.at(right_value);
+        }
+        else{
+            right_val = right_value - '0';
+        }
+        string binary_result = convert_decimal_to_binary(right_val);
+        final_value= binary_result + final_value;
+        right_index-=1;
+        }
+    return final_value;
+    }
 
