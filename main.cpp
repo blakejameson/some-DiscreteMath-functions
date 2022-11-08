@@ -8,10 +8,11 @@ using namespace std;
 string convert_decimal_to_binary(int decimal_number);
 string convert_octal_to_binary(string octal_value);
 string convert_hexadecimal_to_binary(string hexadecimal_value);
+int greatest_common_divisor(int number1, int number2);
 
 
 int main() {
-    cout << convert_hexadecimal_to_binary("1AC");
+    cout << greatest_common_divisor(0,0);
 }
 // In this function, the user enters a decimal (base 10) number,
 // and the binary result (base 2) is returned as a string.
@@ -94,4 +95,29 @@ string convert_hexadecimal_to_binary(string hexadecimal_value){
         }
     return final_value;
     }
+
+//Utilizing the Euclidean Algorithm to find the greatest common divisor
+int greatest_common_divisor(int number1, int number2){
+    int larger=0;
+    int smaller=0;
+    if (number1 >= number2){
+        larger = number1;
+        smaller = number2;
+    }
+    else{
+        larger = number2;
+        smaller = number1;
+    }
+    int remainder=1;
+    int times_divided;
+    while (remainder!=0){
+        times_divided = larger/smaller;
+        remainder = larger - (smaller*times_divided);
+        if (remainder==0){
+            return smaller;
+        }
+        larger =smaller;
+        smaller=remainder;
+    }
+}
 
